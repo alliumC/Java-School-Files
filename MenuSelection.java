@@ -163,6 +163,7 @@ public class MenuSelection {
             default:
                 System.out.println("Invalid Input, Try Again\n");
                 start(args);
+                dataInput.close();
                 break;
         }/*Switch */
         Loop(args);
@@ -176,6 +177,7 @@ public class MenuSelection {
         do {
             if (option.equalsIgnoreCase("no")){
                 System.out.print("Menu is Now Closed");
+                dataInput.close();
                 break;
             }
             else if (option.equalsIgnoreCase("yes")){
@@ -186,5 +188,7 @@ public class MenuSelection {
                 Loop(args);
             }
         } while (option == "yes"); /*While */
+
+        dataInput.close();
     }
 }

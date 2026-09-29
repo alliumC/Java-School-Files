@@ -1,37 +1,36 @@
-import java.util.*;
+import java.io.*;
+import java.util.Scanner;
 
-public class ScannerInput {
-    public static void main(String[] args) {
+public class ScannerInputFixed{
+    public static void main(String[] args) throws IOException {
         Scanner dataInput = new Scanner(System.in);
+        String StudentName = "";
 
         System.out.print("INPUTS\nEnter name: ");
-        String StudentName=dataInput.nextLine();
-
-        /*System.out.println("Enter subjects, seperate each by a space: ");
-        String Subjects=dataInput.nextLine();*/
+        StudentName=dataInput.nextLine();
 
         String[] subjects = {"Math","Science","English","Social Science", "Filipino"};
-        ArrayList<Float> grades = new ArrayList<>();
+        int[] grades = new int[subjects.length];
         float sum = 0f;
 
         System.out.print("\n");
         for (int i=0; i<subjects.length;i++){
             System.out.print("Enter "+subjects[i]+" Grade: ");
-            String input=dataInput.nextLine();
-            float grade=Float.parseFloat(input);
-            sum += grade;
-            grades.add(grade);
+            grades[i]=dataInput.nextInt();
+            sum += grades[i];
+            System.out.println(sum);
         }
         
         System.out.println("\nOUTPUTS\nName: " + StudentName+"\n");
 
-        for (int i=0; i<grades.size();i++){
+        for (int i=0; i<grades.length;i++){
             System.out.println("Grade in "+subjects[i]+": "+
-                                String.valueOf(grades.get(i)).replaceAll("\\.0*$", ""));
+                                String.valueOf(grades[i]).replaceAll("\\.0*$", ""));
         }
 
         float average = sum/subjects.length;
         System.out.print("\nFinal Average: " + String.valueOf(average).replaceAll("\\.0*$", ""));
+
         
         if (average < 75){
             System.out.print("\nYou Failed.");
@@ -47,5 +46,6 @@ public class ScannerInput {
         }
 
         dataInput.close();
+
     }
 }
