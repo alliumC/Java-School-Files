@@ -1,0 +1,71 @@
+class BankAccount{
+   private String accountNumber;
+   private double balance;
+   
+   //Accesor and mutator for name
+   public String getAccountNumber(){
+      return accountNumber;
+   }
+   
+   public void setAccountNumber(String accountNumber) {
+      this.accountNumber=accountNumber;
+   }
+   
+   //Accessor and mutator for price
+   public double getBalance(){
+      return balance;
+   }
+   
+   public void setBalance(double balance){
+      if (balance>0){
+         this.balance=balance;
+      } else {
+         System.out.println("Error: Balance must not be a negative number.");
+      }
+   }
+   
+   public void deposit(double amount){
+      if (amount>0){
+         this.balance += amount;
+      } else {
+         System.out.println("Error: Deposit amount must not be a negative number.");
+      }
+
+   }
+   
+   public void withdraw(double amount){
+      if (amount>0 && balance>amount){
+         this.balance -= amount;
+      } else {
+         System.out.println("Error: Withdraw amount must not be a negative number or is greater than the account balance.");
+      }
+   }
+}
+
+
+public class javaPeta2{
+   public static void main (String[] args){
+      BankAccount bankAccount = new BankAccount();
+      
+      //Setting Values
+      bankAccount.setAccountNumber("Notebook");
+      bankAccount.setBalance(15.99);
+      bankAccount.deposit(-99.00);
+      
+      //Attempt to set invalid price
+      bankAccount.setBalance(-5);
+      
+      //Accessing values
+      System.out.println("Account Number: " + bankAccount.getAccountNumber());
+      System.out.println("Balance: PHP" + bankAccount.getBalance());
+      
+      //Attempt to input valid and invalid deposit amount
+      System.out.println("Balance after deposit: PHP" +bankAccount.deposit(-99.00));
+      System.out.println("Balance after deposit: PHP" + bankAccount.getBalance());
+      
+      //Attempt to input valid and invalid withdrawal amount
+      System.out.println("Balance after withdrawal: PHP" + bankAccount.getBalance());
+      bankAccount.withdraw(120.00);
+
+}
+}
